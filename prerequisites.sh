@@ -80,3 +80,22 @@ flux create source git gitops \
     --username=$GITHUB_USER \
     --token=$GITHUB_TOKEN
 
+# Add the loki helm chart
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+helm install grafana grafana/grafana --namespace grafana --create-namespace
+
+helm show values grafana/loki-distributed > loki-distributed-overrides.yaml
+
+helm upgrade --install --values loki-distributed-overrides.yaml loki grafana/loki-distributed -n grafana-loki --create-namespace
+
+kubectl delete pods -n kube-system -l k8s-app=calico-node
+
+helm show values grafana/promtail > promtail-overrides.yaml
+
+helm upgrade --install --values promtail-overrides.yaml promtail grafana/promtail -n grafana-loki
+
+kubectl port-forward service/grafana 8080:80 -n grafana
+
+kubectl get secret grafana -n grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
