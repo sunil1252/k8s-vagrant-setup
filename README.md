@@ -23,13 +23,13 @@ To provision the cluster, execute the following commands.
 
 ```shell
 git clone https://github.com/sunil1252/k8s-vagrant-setup.git
-cd vagrant-kubeadm-kubernetes
+cd k8s-vagrant-setup
 vagrant up
 ```
 ## Set Kubeconfig file variable
 
 ```shell
-cd vagrant-kubeadm-kubernetes
+cd k8s-vagrant-setup
 cd configs
 export KUBECONFIG=$(pwd)/config
 ```
