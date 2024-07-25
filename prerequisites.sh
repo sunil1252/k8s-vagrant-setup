@@ -60,7 +60,7 @@ echo "=================="
 
 # flux check --pre
 
-export GITHUB_TOKEN=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
+export GITHUB_TOKEN=github_pat_11ASIYMHgBg4nC5oYRTjOwMQdSu4oMGCBDM4DVOZu9t4V
 export GITHUB_USER=sunil1252
 
 
