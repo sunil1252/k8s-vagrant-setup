@@ -66,6 +66,18 @@ Open the site in your browser:
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
 ```
 
+## To Suspend the cluster,
+
+```shell
+vagrant suspend
+```
+
+## To Resume the cluster,
+
+```shell
+vagrant resume
+```
+
 ## To shutdown the cluster,
 
 ```shell
